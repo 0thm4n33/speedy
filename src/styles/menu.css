@@ -1,0 +1,29 @@
+.root-menu{
+    width: 100%;
+    display: flex;
+    font-family: 'Poppins';
+    background-color: white;
+}
+
+.logo{
+    padding: 10px;
+}
+
+.menu-item{
+    display: flex;
+    align-items: center;
+    width: 60%;
+    justify-content: center;
+    align-items: center;
+    color: red;
+    padding: 5px;
+}
+
+.items{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 60%;
+    cursor: pointer;
+}

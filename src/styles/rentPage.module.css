@@ -1,0 +1,11 @@
+.rentRoot{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+.rowTwo{
+    border: 1px solid black;
+}
+.rowOne{
+    width: 18%;
+}

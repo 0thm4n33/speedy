@@ -1,0 +1,27 @@
+.rent-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Poppins';
+    font-weight: bold;
+}
+.rent-image{
+    width: 70%;
+    height: 70%;
+}
+.rent-image:hover{
+    transition: 1s ease;
+    width: 90%;
+    height: 90%;
+    cursor: pointer;
+}
+.rent-image:not(:hover){
+    width: 100%;
+    height: 100%;
+    transition: 0.5s ease-in;
+}
+.rent-container:hover{
+   background-color: red;
+   color: white;
+   transition: 0.5s ease-out;
+}
