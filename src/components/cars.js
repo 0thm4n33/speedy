@@ -148,7 +148,7 @@ export default function CarsComponent({ car }){
                     </Typography>
                     <Stack spacing={3} direction={{xs:"column",md:"row"}} padding={"10px"}>
                         <Button className={style.button}>VIEW DETAILS</Button>
-                        <EnqueryModal style={style.button} />
+                        <EnqueryModal style={style.button} car={car}/>
                     </Stack>
                 </Box> 
         </Box>
