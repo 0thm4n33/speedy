@@ -1,9 +1,11 @@
 import { Box, Button, Stack, Typography} from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import {Check} from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
 import React from "react";
 import image from '../assets/images/bmw-520i.webp';
 import EnqueryModal from "../modals/enquery";
+import PriceComponent from "./prices";
 const title = {
     fontFamily:"Poppins",
     fontWeight:"bold",
@@ -81,21 +83,21 @@ const useStyle = makeStyles({
     }
 })
 
-const prices = [
-    {"period":"Monthly","coeff":30},
-    {"period":"Weekly","coeff":7},
-    {"period":"Daily","coeff":1}
-]
-
 const features = [
     {"name":"Minimum Documents Required"},
-    {"name":"Drop off Anywhere in Casablanca"},
+    {"name":"Drop off Anywhere in Paris"},
     {"name":"Service & Maintenance Free"},
     {"name":"24/7 Roadside Assistance"},
 ]
 
 export default function CarsComponent({ car }){
     const style = useStyle();
+    const navigate = useNavigate()
+    
+    const detailOnClick = () =>{
+        navigate(`/cars/${car.marque}/${car.id}`,{state:{car}});
+    }
+
     return(
         <Box className={style.wrapper} sx={{flexDirection:{xs:"column",lg:"row"}}}>
              <Box className={style.boxImg}>
@@ -130,14 +132,7 @@ export default function CarsComponent({ car }){
                         {car.type}
                     </Typography>
                     <Typography component={"div"} className={style.priceWrapper}>
-                       {prices.map((price)=>(
-                           <div>
-                            <Typography component={"span"} className={style.priceInfo}>
-                                {car.prix * price.coeff}DH
-                            </Typography>
-                            / {price.period}
-                           </div>
-                       ))}
+                        <PriceComponent carPrice={car.prix} />
                     </Typography>
                     <Typography component={"div"} className={style.featuresWrapper}>
                         {features.map((f)=>(
@@ -147,8 +142,8 @@ export default function CarsComponent({ car }){
                         ))}
                     </Typography>
                     <Stack spacing={3} direction={{xs:"column",md:"row"}} padding={"10px"}>
-                        <Button className={style.button}>VIEW DETAILS</Button>
-                        <EnqueryModal style={style.button} />
+                        <Button className={style.button} onClick={detailOnClick} >VIEW DETAILS</Button>
+                        <EnqueryModal style={style.button} car={car}/>
                     </Stack>
                 </Box> 
         </Box>

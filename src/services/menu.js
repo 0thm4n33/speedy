@@ -1,7 +1,7 @@
 const menu = [
     {'name':'About US','url':'/about-us'},
 ]
-const save = [
+const saveForLater = [
     {'name':'Cars for rent','children':[
         {'name':'Afficher tous les voiturs','url':'/all'},
         {'name': 'Lux','url':'/lux'},
