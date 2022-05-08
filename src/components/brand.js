@@ -36,6 +36,9 @@ const useStyle = makeStyles({
 })
 
 export default function BrandComponent({brands}){
+    const classes = useStyle();
+    const width= 90;
+    const height = 90;
     const [value,setValue] = useState(0);
     const handleOnChange = (event)=>{
         let target = parseInt(event.target.alt);
@@ -44,9 +47,7 @@ export default function BrandComponent({brands}){
         }
         setValue(target);
     }
-    const classes = useStyle();
-    const width = 90;
-    const height = 90;
+   
     return(
         <Box
             sx={{

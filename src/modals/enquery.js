@@ -1,8 +1,10 @@
-import { Button,Box, Dialog, DialogContent, Card, Typography, CardMedia, DialogActions} from "@mui/material";
+import { Button,Box, Dialog, DialogContent, Card, Typography, CardMedia, DialogActions, Snackbar, Alert} from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import React,{useState} from "react";
-import {Close,Email,Phone,TextSnippet   } from "@mui/icons-material"
+import {Email,Phone,TextSnippet   } from "@mui/icons-material"
+//import service from "../services/index.js";
 import LabelTextField from "../components/labelTextField";
+import { ReservationContext } from "../App";
 const useStyle = makeStyles({
     wrapper:{
         width:"100%",
@@ -42,6 +44,7 @@ const useStyle = makeStyles({
     button:{
         backgroundColor:"red",
         color:"white",
+        width:"100%",
         fontWeight:"bold",
         padding:"10px",
         fontFamily:"Poppins",
@@ -51,8 +54,22 @@ const useStyle = makeStyles({
     }
 })
 export default function EnqueryModal(props){
+    const service = React.useContext(ReservationContext);
+    console.log(service);
     const style = useStyle();
     const [open,setOpen] = useState(false);
+    const [openSnack,setOpenScnak] = useState(false);
+    
+    const [reservation,setReservation] = useState(
+        {
+            From:"",
+            To:"",
+            FullName:"",
+            Phone:"",
+            Email:"",
+            car:props.car
+        }
+    )
 
     const handleOnOpen = ()=>{
         setOpen(true);
@@ -62,9 +79,28 @@ export default function EnqueryModal(props){
         setOpen(false);
     }
 
+    const handleOnSnackClose = (event,reason)=>{
+        if(reason === "clickaway") return;
+        setOpenScnak(false)
+    }
+
+    function handleOnChange(event){
+        console.log(event.target.name);
+        setReservation({...reservation,[event.target.name]:event.target.value})
+    }
+
+    const handleOnSubmit = () => {
+        service.addReservation(reservation);
+        setReservation({From:"",To:"",FullName:"",Phone:"",Email:""});
+        setOpenScnak(true);
+        setOpen(false);
+    }
+
+
+
     return(
         <div className={style.wrapper}>
-            <Button className={props.style} onClick={handleOnOpen}>
+            <Button className={props.style === undefined ? style.button : props.style } onClick={handleOnOpen}>
                 SEND ENQUERY
             </Button>
             <Dialog open={open} onClose={handleOnClose} className={style.modal} scroll="body">
@@ -83,20 +119,23 @@ export default function EnqueryModal(props){
                             component={"form"}
                             className={style.bodyModal}
                         >
-                            <LabelTextField type={"datetime-local"} label={"From"} style={style.textField} />
-                            <LabelTextField type={"datetime-local"} label={"to"} style={style.textField} />
-                            <LabelTextField label={"Fullname"} type={"text"} icon={<TextSnippet />} style={style.textField} />
-                            <LabelTextField label={"Phone"} type={"tel"} icon={<Phone />} style={style.textField}/>
-                            <LabelTextField label={"Email"} type={"email"} icon={<Email />} style={style.textField}/>
+                            <LabelTextField type={"datetime-local"} label={"From"} style={style.textField} value={reservation.From} onChange={handleOnChange} />
+                            <LabelTextField type={"datetime-local"} label={"To"} style={style.textField} value={reservation.To} onChange={handleOnChange}/>
+                            <LabelTextField label={"FullName"} type={"text"} icon={<TextSnippet />} value={reservation.FullName} style={style.textField} onChange={handleOnChange}/>
+                            <LabelTextField label={"Phone"} type={"tel"} icon={<Phone />}  value={reservation.Phone} style={style.textField} onChange={handleOnChange}/>
+                            <LabelTextField label={"Email"} type={"email"} value={reservation.Email} icon={<Email />} style={style.textField} onChange={handleOnChange}/>
                         </Box>
                     </Card>
                 </DialogContent>
                 <DialogActions sx={{display:"flex",justifyContent:"center"}}>
-                    <Button className={props.style}>
+                    <Button className={style.button} onClick={handleOnSubmit}>
                             SEND ENQUERY
                     </Button>
                 </DialogActions>
-            </Dialog>  
+            </Dialog>
+            <Snackbar open={openSnack} anchorOrigin={{vertical:"bottom",horizontal:"right"}} autoHideDuration={3000} onClose={handleOnSnackClose}>
+                <Alert severity="success">Booking saved</Alert>
+            </Snackbar>
         </div>
        
     )

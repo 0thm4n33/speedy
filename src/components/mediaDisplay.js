@@ -26,14 +26,15 @@ const useStyle = makeStyles({
         fontSize:"large"
     }
 });
-export default function MediaDisplay({type, url}){
+export default function MediaDisplay({type, url,style}){
     const classes = useStyle();
     let image = null;
     if(type === 'image'){
+        console.log('image:'+url)
         image = require(`../assets/images/${url}`);
     }
     return(
-        <div className={classes.imgcontainer}>
+        <div className={style === undefined ? classes.imgcontainer : null}>
             {
                 type === "video" ?
                 <CardMedia className={classes.baseStyle}>
@@ -44,7 +45,7 @@ export default function MediaDisplay({type, url}){
                     />
                 </CardMedia> :
                  <CardMedia
-                    className={classes.baseStyle}
+                    className={style === undefined ? classes.baseStyle : null}
                     image={image}
                 />
             }
