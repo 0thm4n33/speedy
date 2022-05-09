@@ -42,7 +42,7 @@ export default function BrandComponent({brands}){
     const naviagte = useNavigate();
     const handleOnChange = (event)=>{
         const brand = event.target.alt;
-        naviagte(`/rent/${brand}`);
+        brand !== undefined && naviagte(`/rent/${brand}`);
     }
    
     return(

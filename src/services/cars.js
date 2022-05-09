@@ -94,6 +94,18 @@ const cars = [
         "image":"mercedes/mercedes-c300.jpeg",
         "coleurs":[{"1":"bleu","2":"noir","3":"blanc"}],
         "images":["mercedes/mercedes-c300.jpeg"]
+    },
+    {
+        "id":"8",
+        "marque":"audi",
+        "serie":"Q5",
+        "prix":"3500",
+        "year":"2020",
+        "passengers":"4",
+        "type":"SUV",
+        "image":"audi/q5.jpeg",
+        "coleurs":[{"1":"bleu","2":"noir","3":"blanc"}],
+        "images":["audi/q5.jpeg"]
     }
 ]
 
