@@ -67,7 +67,7 @@ export default function BrandComponent({brands}){
                         sx={{width:width,height:height,cursor:"pointer"}}
                     />
                         <span>{brand.name}</span>
-                        <span>{brand.nombreOfCars}</span>
+                        <span>3</span>
                  </div>
                 ))}
              </Tabs>
