@@ -103,8 +103,8 @@ export default function CarsComponent({ car }){
              <Box className={style.boxImg}>
                 <Box
                     component={"img"}
-                    sx={{height:260,width:320}}
-                    src={image}
+                    sx={{height:120,width:220}}
+                    src={require(`../assets/images/${car.image}`)}
                     />
                 <Box
                  component={"div"}

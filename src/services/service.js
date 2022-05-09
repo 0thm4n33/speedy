@@ -20,10 +20,16 @@ export default class Service{
     }
 
     getCarsByType(type){
-        /*
-        const carsByType = cars.filter(car => car.type === type);
-        return carsByType;*/
-        return cars;
+        const brand = type.toLowerCase();
+        console.log(`brand: ${brand}`);
+        if(['audi','bmw','volkswagen','mercedes-benz'].indexOf(brand)===-1){
+            return cars;
+        }
+        else{
+            const result = cars.filter(car => car.marque === brand);
+            console.log(`result: ${result}`);
+            return result;
+        }
     }
     
     authenticate(user){

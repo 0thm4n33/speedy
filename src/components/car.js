@@ -32,7 +32,7 @@ export default function CarComponenet({car}){
                         component={"img"}
                             width={"100%"}
                             src={require(`../assets/images/${img}`)}
-                            />
+                    />
                     ))}
             </SwipeComponenet>
             <CarDescritpion 

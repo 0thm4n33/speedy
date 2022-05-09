@@ -7,7 +7,7 @@ const cars = [
         "prix":"3500",
         "passengers":"4",
         "type":"SUV",
-        "image":"bmw-520i.webp",
+        "image":"bmw-520i.jpeg",
         "coleurs":[{"1":"bleu","2":"noir","3":"blanc"}],
         "images":["bmw/520i/520-1.jpg","bmw/520i/520-2.jpg","bmw/520i/520-3.jpg"]
     },
@@ -19,7 +19,7 @@ const cars = [
         "year":"2020",
         "passengers":"4",
         "type":"SUV",
-        "image":"bmw-520i.webp",
+        "image":"bmw-520i.jpeg",
         "coleurs":[{"1":"bleu","2":"noir","3":"blanc"}],
         "images":["bmw/520i/520-1.jpg","bmw/520i/520-2.jpg","bmw/520i/520-3.jpg"]
     },
@@ -31,9 +31,69 @@ const cars = [
         "year":"2020",
         "passengers":"4",
         "type":"SUV",
-        "image":"bmw-520i.webp",
+        "image":"bmw-520i.jpeg",
         "coleurs":[{"1":"bleu","2":"noir","3":"blanc"}],
         "images":["bmw/520i/520-1.jpg","bmw/520i/520-2.jpg","bmw/520i/520-3.jpg"]
+    },
+    {
+        "id":"4",
+        "marque":"audi",
+        "serie":"A3",
+        "prix":"3500",
+        "year":"2020",
+        "passengers":"4",
+        "type":"SUV",
+        "image":"audi/a3.jpeg",
+        "coleurs":[{"1":"bleu","2":"noir","3":"blanc"}],
+        "images":["audi/a3.jpeg"]
+    },
+    {
+        "id":"5",
+        "marque":"audi",
+        "serie":"Q3",
+        "prix":"3500",
+        "year":"2020",
+        "passengers":"4",
+        "type":"SUV",
+        "image":"audi/q3.jpeg",
+        "coleurs":[{"1":"bleu","2":"noir","3":"blanc"}],
+        "images":["audi/q3.jpeg"]
+    },
+    {
+        "id":"6",
+        "marque":"volkswagen",
+        "serie":"passat",
+        "prix":"3500",
+        "year":"2020",
+        "passengers":"4",
+        "type":"SUV",
+        "image":"volkswagen/passat.jpeg",
+        "coleurs":[{"1":"bleu","2":"noir","3":"blanc"}],
+        "images":["volkswagen/passat.jpeg"]
+    },
+    {
+        "id":"7",
+        "marque":"mercedes-benz",
+        "serie":"c200",
+        "prix":"3500",
+        "year":"2020",
+        "passengers":"4",
+        "type":"SUV",
+        "image":"mercedes/mercedes-c200.jpeg",
+        "coleurs":[{"1":"bleu","2":"noir","3":"blanc"}],
+        "images":["mercedes/mercedes-c200.jpeg"]
+    },
+    {
+        "id":"8",
+        "marque":"mercedes-benz",
+        "serie":"c300",
+        "prix":"3500",
+        "year":"2020",
+        "passengers":"4",
+        "type":"SUV",
+        "image":"mercedes/mercedes-c300.jpeg",
+        "coleurs":[{"1":"bleu","2":"noir","3":"blanc"}],
+        "images":["mercedes/mercedes-c300.jpeg"]
     }
 ]
 
