@@ -8,6 +8,7 @@ import DetailCar from './pages/detailCar';
 import Service from './services/service';
 import AuthenticationPage from './pages/authentication';
 import AdminPanel from './pages/panel';
+import ScrollToTop from './components/scrollToTop';
 export const ReservationContext = React.createContext();
 const service = new Service();
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <ReservationContext.Provider value={service}>
            <Router>
               <Layout>
+                  <ScrollToTop />
                   <Routes>
                     <Route path='/' element={<AcceuillPage/>} />
                     <Route path='/rent/:type' element={<RentPage />} />

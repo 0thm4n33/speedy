@@ -39,16 +39,10 @@ export default function BrandComponent({brands}){
     const classes = useStyle();
     const width= 90;
     const height = 90;
-    const [value,setValue] = useState(0);
     const naviagte = useNavigate();
     const handleOnChange = (event)=>{
-        let target = parseInt(event.target.alt);
-        if(isNaN(target)){
-            target = 0;
-        }
-        setValue(target);
-        console.log(event.target.alt);
-        naviagte(`/rent/${event.target.alt}`);
+        const brand = event.target.alt;
+        naviagte(`/rent/${brand}`);
     }
    
     return(
@@ -61,7 +55,7 @@ export default function BrandComponent({brands}){
         >
             <Tabs 
                 variant="scrollable"
-                value={value}
+                value={0}
                 onChange={handleOnChange}
                 sx={{width:"50%"}} 
             >
