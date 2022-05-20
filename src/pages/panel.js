@@ -5,14 +5,16 @@ import { ReservationContext } from "../App";
 import { useNavigate } from "react-router-dom";
 let data = 
 { 
-    titles:["From","To","FullName","Phone","Email","Marque","Serie","Year"],
+    titles:["From","To","FullName","Phone","Email","Marque","Serie","Year","Image"],
     rows:[]
  }
 export default function AdminPanel(){
-  
     const navigate = useNavigate();
     const gestion = React.useContext(ReservationContext);
     const reservations = gestion.getReservations();
+    const open = () =>{
+        window.open(localStorage.getItem('image'),'_blank');
+    }
     const logout = () =>{
         navigate('/');
     }
@@ -44,6 +46,9 @@ export default function AdminPanel(){
                             <TableCell>{res.car.marque}</TableCell>
                             <TableCell>{res.car.serie}</TableCell>
                             <TableCell>{res.car.year}</TableCell>
+                            <TableCell>
+                                <img  width={"100"} height={"50"} src={res.Cin} alt={"Cin"}/>
+                            </TableCell>
                         </TableRow>
                     ))}
                 </TableBody>

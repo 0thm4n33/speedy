@@ -12,10 +12,11 @@ export default class Service{
 
     addReservation(reservation){
         this.reservations.push(reservation);
-        console.log(reservation);
+        localStorage.setItem('reservations',JSON.stringify(this.reservations));
     }
 
     getReservations(){
+        this.reservations = JSON.parse(localStorage.getItem('reservations'));
         return this.reservations;
     }
 

@@ -1,7 +1,7 @@
 import { Button,Box, Dialog, DialogContent, Card, Typography, CardMedia, DialogActions, Snackbar, Alert} from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import React,{useState} from "react";
-import {Email,Phone,TextSnippet   } from "@mui/icons-material"
+import {Email,Phone,TextSnippet,Image } from "@mui/icons-material"
 //import service from "../services/index.js";
 import LabelTextField from "../components/labelTextField";
 import { ReservationContext } from "../App";
@@ -67,7 +67,8 @@ export default function EnqueryModal(props){
             FullName:"",
             Phone:"",
             Email:"",
-            car:props.car
+            car:props.car,
+            Cin:""
         }
     )
 
@@ -86,12 +87,21 @@ export default function EnqueryModal(props){
 
     function handleOnChange(event){
         console.log(event.target.name);
-        setReservation({...reservation,[event.target.name]:event.target.value})
+        setReservation({...reservation,[event.target.name]:event.target.value});
+    }
+
+    function loadImage(){
+        const img = document.getElementById("Cin").files[0];
+        let reader = new FileReader();
+        reader.onload = (e) =>{
+            setReservation({...reservation,"Cin":e.target.result});
+        }
+        reader.readAsDataURL(img);
     }
 
     const handleOnSubmit = () => {
         service.addReservation(reservation);
-        setReservation({From:"",To:"",FullName:"",Phone:"",Email:""});
+        setReservation({From:"",To:"",FullName:"",Phone:"",Email:"",Cin:""});
         setOpenScnak(true);
         setOpen(false);
     }
@@ -124,6 +134,7 @@ export default function EnqueryModal(props){
                             <LabelTextField label={"FullName"} type={"text"} icon={<TextSnippet />} value={reservation.FullName} style={style.textField} onChange={handleOnChange}/>
                             <LabelTextField label={"Phone"} type={"tel"} icon={<Phone />}  value={reservation.Phone} style={style.textField} onChange={handleOnChange}/>
                             <LabelTextField label={"Email"} type={"email"} value={reservation.Email} icon={<Email />} style={style.textField} onChange={handleOnChange}/>
+                            <LabelTextField label={"Cin"} type={"file"} icon={<Image />} style={style.textField} value={reservation.Cin} onChange={loadImage} />
                         </Box>
                     </Card>
                 </DialogContent>
